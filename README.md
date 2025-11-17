@@ -82,7 +82,33 @@ A prototype system that converts handwritten aircraft journey forms into structu
 - `Mistral OCR` demonstrates superior handwriting recognition vs traditional OCR
 - `Contextual LLM` parsing intelligently and do interpretation (e.g: corrects common errors) 
 - `End-to-end pipeline` reduces complexity vs multi-tool chains
-- `High accuracy `justifies the API cost (do cost analysis here) 
+- `High accuracy `justifies the API cost :
+
+`Cost Estimation (Simulated scenarios)`
+
+**Mistral API Pricing**:
+- **OCR (Standard)**: $1 per 1,000 pages ($0.001/page)
+- **OCR (Batch)**: $1 per 2,000 pages ($0.0005/page)
+- **LLM Parsing**: Additional cost per API call
+
+#### Production Scenario: Medium Airline
+
+**Assumptions**:
+- 100 flights/day
+- 3 forms per flight (per assignment context: "2-3 forms after every flight")
+- 30 days/month operation
+
+| Calculation | Value |
+|-------------|-------|
+| Forms/Day | 100 flights × 3 forms = **300 forms** |
+| Forms/Month | 300 forms × 30 days = **9,000 forms** |
+
+**Monthly API Cost**:
+
+| Processing Method | Calculation | Cost |
+|-------------------|-------------|------|
+| Standard | 9,000 pages ÷ 1,000 × $1 | **$9.00** |
+| Batch | 9,000 pages ÷ 2,000 × $1 | **$4.50** |
 
 #### 2. FastAPI + Streamlit
 The assignment asks for "minimal working path," but forms have ambiguous/missing fields that need human review. So I built:
